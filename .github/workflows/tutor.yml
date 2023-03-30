@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout to community-tutor repo
+      - name: trigger community-tutor workflow
         run: |
           curl -L \
           -X POST \
