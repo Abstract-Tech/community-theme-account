@@ -5,8 +5,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+
       - name: Import Workflow
-        uses: "docker://alpine/git"
-        with:
-          args: ["clone", "--depth", "1", "https://github.com/Abstract-Tech/community-theme-tutor.git", "./community-theme-tutor"]
+        run: |
+          git clone https://github.com/Abstract-Tech/community-theme-tutor.git
+
       - uses: ./community-theme-tutor/.github/workflows/tutor.yml
