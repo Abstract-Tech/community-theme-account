@@ -4,10 +4,9 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-
-      - name: Import Workflow
-        run: |
-          git clone https://github.com/Abstract-Tech/community-theme-tutor.git
+      - name: Checkout to community-tutor repo
+        uses: actions/checkout@master
+        with:
+          repository: Abstract-Tech/community-theme-tutor
       
-      - uses: ./community-theme-tutor/.github/workflows/tutor.yml
+      - uses: .github/workflows/tutor.yml
