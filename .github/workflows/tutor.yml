@@ -10,4 +10,4 @@ jobs:
           repository: Abstract-Tech/community-theme-tutor
           path: community-theme-tutor
       
-      - uses: ./community-theme-tutor/.github/workflows/tutor.yml
+      - uses: /community-theme-tutor/.github/workflows/tutor.yml
