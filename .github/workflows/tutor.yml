@@ -10,4 +10,4 @@ jobs:
         run: |
           git clone https://github.com/Abstract-Tech/community-theme-tutor.git
 
-      - uses: ./community-theme-tutor/.github/workflows/tutor.yml
+      - uses: $GITHUB_WORKSPACE/community-theme-tutor/.github/workflows/tutor.yml
