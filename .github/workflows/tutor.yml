@@ -12,6 +12,6 @@ jobs:
       
       - name: Run community-theme-tutor worflow
         run: |
-          cd community-theme-tutor/.github/workflows
-          ls -al
- #     - uses: /community-theme-tutor/.github/workflows/tutor.yml
+          cd community-theme-tutor
+          
+      - uses: /community-theme-tutor/.github/workflows/tutor.yml
