@@ -2,8 +2,7 @@ name: Build and deploy tutor
 on:
   push:
     branches: [ "community-theme-master" ]
-  pull_request:
-    branches: [ "community-theme-master" ]
+  
 
 jobs:
   deploy:
