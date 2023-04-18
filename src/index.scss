@@ -1,12 +1,12 @@
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 
-@import "~@edx/brand/paragon/fonts";
-@import "~@edx/brand/paragon/variables";
+@import "~@abstract-tech/community-theme-brand/paragon/fonts";
+@import "~@abstract-tech/community-theme-brand/paragon/variables";
 @import "~@edx/paragon/scss/core/core";
-@import "~@edx/brand/paragon/overrides";
-@import "~@edx/frontend-component-header/dist/index";
-@import "~@edx/frontend-component-footer/dist/footer";
+@import "~@abstract-tech/community-theme-brand/paragon/overrides";
+@import "~@abstract-tech/community-theme-header/dist/index";
+@import "~@abstract-tech/community-theme-footer/dist/footer";
 
 @import "./account-settings/style";
 @import "./id-verification/id-verification";
