@@ -79,6 +79,9 @@ class AccountSettingsPage extends React.Component {
   }
 
   componentDidMount() {
+    console.log("below is the data");
+    console.log(this.props);
+    console.log(this.props.formValues.company);
     this.props.fetchSettings();
     this.props.fetchSiteLanguages();
     sendTrackingLogEvent('edx.user.settings.viewed', {
@@ -533,7 +536,19 @@ class AccountSettingsPage extends React.Component {
             )}
             isEditable={false}
             {...editableFieldProps}
-          />
+          /> 
+          <EditableField
+            name="company"
+            type="text"
+            value={this.props.formValues.company}
+              label={"company"}
+            helpText={this.props.intl.formatMessage(
+              messages['account.settings.field.username.help.text'],
+              { siteName: getConfig().SITE_NAME },
+            )}
+            isEditable={true}
+            {...editableFieldProps}
+          /> 
           <EditableField
             name="name"
             type="text"
@@ -849,6 +864,7 @@ AccountSettingsPage.propTypes = {
     username: PropTypes.string,
     name: PropTypes.string,
     email: PropTypes.string,
+    company: PropTypes.string,
     secondary_email: PropTypes.string,
     secondary_email_enabled: PropTypes.bool,
     year_of_birth: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
