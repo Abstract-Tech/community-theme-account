@@ -10,19 +10,22 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Route, Switch } from 'react-router-dom';
 
-import Header, { messages as headerMessages } from '@edx/frontend-component-header';
-import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
+import Header from '@edx/frontend-component-header';
+import Footer from '@edx/frontend-component-footer';
 
 import configureStore from './data/configureStore';
 import AccountSettingsPage, { NotFoundPage } from './account-settings';
 import IdVerificationPage from './id-verification';
 import CoachingConsent from './account-settings/coaching/CoachingConsent';
-import appMessages from './i18n';
+import messages from './i18n';
 
 import './index.scss';
 import Head from './head/Head';
+import NotificationCourses from './notification-preferences/NotificationCourses';
+import NotificationPreferences from './notification-preferences/NotificationPreferences';
 
 subscribe(APP_READY, () => {
+  const allowNotificationRoutes = false;
   ReactDOM.render(
     <AppProvider store={configureStore()}>
       <Head />
@@ -32,6 +35,12 @@ subscribe(APP_READY, () => {
           <Header />
           <main className="flex-grow-1">
             <Switch>
+              {allowNotificationRoutes && (
+                <>
+                  <Route path="/notifications/:courseId" component={NotificationPreferences} />
+                  <Route path="/notifications" component={NotificationCourses} />
+                </>
+              )}
               <Route path="/id-verification" component={IdVerificationPage} />
               <Route exact path="/" component={AccountSettingsPage} />
               <Route path="/notfound" component={NotFoundPage} />
@@ -51,11 +60,7 @@ subscribe(APP_INIT_ERROR, (error) => {
 });
 
 initialize({
-  messages: [
-    appMessages,
-    headerMessages,
-    footerMessages,
-  ],
+  messages,
   requireAuthenticatedUser: true,
   hydrateAuthenticatedUser: true,
   handlers: {

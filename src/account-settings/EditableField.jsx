@@ -1,11 +1,9 @@
-/* eslint-disable react/jsx-no-useless-fragment */
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getConfig } from '@edx/frontend-platform';
 import { injectIntl, intlShape } from '@edx/frontend-platform/i18n';
 import {
-  Button, Input, StatefulButton, ValidationFormGroup,
+  Button, Form, StatefulButton,
 } from '@edx/paragon';
 import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -20,7 +18,7 @@ import {
 import { editableFieldSelector } from './data/selectors';
 import CertificatePreference from './certificate-preference/CertificatePreference';
 
-function EditableField(props) {
+const EditableField = (props) => {
   const {
     name,
     label,
@@ -28,7 +26,6 @@ function EditableField(props) {
     type,
     value,
     userSuppliedValue,
-    options,
     saveState,
     error,
     confirmationMessageDefinition,
@@ -45,10 +42,6 @@ function EditableField(props) {
     ...others
   } = props;
   const id = `field-${name}`;
-  let inputOptions = options;
-  if (getConfig().ENABLE_COPPA_COMPLIANCE && name === 'level_of_education' && options) {
-    inputOptions = options.filter(option => option.value !== 'el');
-  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -80,15 +73,6 @@ function EditableField(props) {
     }
     let finalValue = rawValue;
 
-    if (options) {
-      // Use == instead of === to prevent issues when HTML casts numbers as strings
-      // eslint-disable-next-line eqeqeq
-      const selectedOption = options.find(option => option.value == rawValue);
-      if (selectedOption) {
-        finalValue = selectedOption.label;
-      }
-    }
-
     if (userSuppliedValue) {
       finalValue += `: ${userSuppliedValue}`;
     }
@@ -112,25 +96,24 @@ function EditableField(props) {
         editing: (
           <>
             <form onSubmit={handleSubmit}>
-              <ValidationFormGroup
-                for={id}
-                invalid={error != null}
-                invalidMessage={error}
-                helpText={helpText}
+              <Form.Group
+                controlId={id}
+                isInvalid={error != null}
               >
-                <label className="h6 d-block" htmlFor={id}>{label}</label>
-                <Input
+                <Form.Label size="sm" className="h6 d-block" htmlFor={id}>{label}</Form.Label>
+                <Form.Control
                   data-hj-suppress
                   name={name}
                   id={id}
                   type={type}
                   value={value}
                   onChange={handleChange}
-                  options={inputOptions}
                   {...others}
                 />
-                <>{others.children}</>
-              </ValidationFormGroup>
+                {!!helpText && <Form.Text>{helpText}</Form.Text>}
+                {error != null && <Form.Control.Feedback hasIcon={false}>{error}</Form.Control.Feedback>}
+                {others.children}
+              </Form.Group>
               <p>
                 <StatefulButton
                   type="submit"
@@ -179,7 +162,7 @@ function EditableField(props) {
       }}
     />
   );
-}
+};
 
 EditableField.propTypes = {
   name: PropTypes.string.isRequired,
@@ -188,10 +171,6 @@ EditableField.propTypes = {
   type: PropTypes.string.isRequired,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   userSuppliedValue: PropTypes.string,
-  options: PropTypes.arrayOf(PropTypes.shape({
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-    value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  })),
   saveState: PropTypes.oneOf(['default', 'pending', 'complete', 'error']),
   error: PropTypes.string,
   confirmationMessageDefinition: PropTypes.shape({
@@ -213,7 +192,6 @@ EditableField.propTypes = {
 
 EditableField.defaultProps = {
   value: undefined,
-  options: undefined,
   saveState: undefined,
   label: undefined,
   emptyLabel: undefined,

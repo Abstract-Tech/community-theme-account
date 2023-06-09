@@ -49,6 +49,9 @@ class BetaLanguageBanner extends React.Component {
 
   render() {
     const savedLanguage = this.getSiteLanguageEntry(this.context.locale);
+    if (!savedLanguage || !savedLanguage.released) {
+      return null;
+    }
     const isSavedLanguageReleased = savedLanguage.released === true;
     const noPreviousLanguageSet = this.props.siteLanguage.previousValue === null;
     if (isSavedLanguageReleased || noPreviousLanguageSet) {
@@ -56,6 +59,9 @@ class BetaLanguageBanner extends React.Component {
     }
 
     const previousLanguage = this.getSiteLanguageEntry(this.props.siteLanguage.previousValue);
+    if (!previousLanguage || !previousLanguage.released) {
+      return null;
+    }
     return (
       <div>
         <Alert className="beta_language_alert alert alert-warning" role="alert">

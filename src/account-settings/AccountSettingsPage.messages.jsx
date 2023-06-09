@@ -276,6 +276,16 @@ const messages = defineMessages({
     defaultMessage: 'Year',
     description: 'Label for account settings year of birth field.',
   },
+  'account.settings.field.dob.month.default': {
+    id: 'account.settings.field.month.year.default',
+    defaultMessage: 'Select month',
+    description: 'Default label for account settings month of birth field.',
+  },
+  'account.settings.field.dob.year.default': {
+    id: 'account.settings.field.dob.year.default',
+    defaultMessage: 'Select year',
+    description: 'Default label for account settings year of birth field.',
+  },
   'account.settings.field.dob.form.button': {
     id: 'account.settings.field.dob.form.button',
     defaultMessage: 'Please confirm your date of birth',
@@ -283,17 +293,17 @@ const messages = defineMessages({
   },
   'account.settings.field.dob.form.title': {
     id: 'account.settings.field.dob.form.title',
-    defaultMessage: 'Confirm your date of birth',
+    defaultMessage: 'Enter your birth month and year',
     description: 'Title of DOB form',
   },
   'account.settings.field.dob.form.help.text': {
     id: 'account.settings.field.dob.form.help.text',
-    defaultMessage: 'We ask for birth date information to help us comply with our legal obligations.',
+    defaultMessage: 'We ask for birth month and year information to help us comply with our legal obligations.',
     description: 'Help text for DOB form',
   },
   'account.settings.field.dob.form.success': {
     id: 'account.settings.field.dob.form.success',
-    defaultMessage: 'Thank you for entering your birth date information.',
+    defaultMessage: 'Thank you for entering your information.',
     description: 'Title of banner when date of birth is successfully entered',
   },
   'account.settings.field.month_of_birth.options.empty': {
@@ -554,6 +564,11 @@ const messages = defineMessages({
     id: 'account.settings.static.field.empty.no.admin',
     defaultMessage: 'No value set.',
     description: 'The placeholder for an empty but uneditable field when there is no administrator',
+  },
+  'notification.preferences.notifications.label': {
+    id: 'notification.preferences.notifications.label',
+    defaultMessage: 'Notifications',
+    description: 'Label for Notifications',
   },
 });
 

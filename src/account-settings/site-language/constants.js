@@ -20,6 +20,11 @@ const siteLanguageList = [
     released: true,
   },
   {
+    code: 'fa-ir',
+    name: 'فارسی',
+    released: true,
+  },
+  {
     code: 'fr',
     name: 'Français',
     released: true,
@@ -67,6 +72,31 @@ const siteLanguageList = [
   {
     code: 'zh-cn',
     name: '中文 (简体)',
+    released: true,
+  },
+  {
+    code: 'pt',
+    name: 'Português',
+    released: true,
+  },
+  {
+    code: 'it',
+    name: 'Italian',
+    released: true,
+  },
+  {
+    code: 'de',
+    name: 'German',
+    released: true,
+  },
+  {
+    code: 'hi',
+    name: 'Hindi',
+    released: true,
+  },
+  {
+    code: 'fr-ca',
+    name: 'French (CA)',
     released: true,
   },
 ];
