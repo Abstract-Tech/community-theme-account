@@ -13,8 +13,9 @@ import Alert from './Alert';
 
 class BetaLanguageBanner extends React.Component {
   getSiteLanguageEntry(languageCode) {
-    return this.props.siteLanguageList.filter(l => l.code === languageCode)[0];
-  }
+    const languageEntry = this.props.siteLanguageList.filter(l => l.code === languageCode);
+    return languageEntry.length > 0 ? languageEntry[0] : null;
+}
 
   /**
    * Returns a link to the Transifex URL where contributors can provide translations.
