@@ -5,7 +5,8 @@ on:
 
 jobs:
   deploy:
-    permissions: write-all
+    permissions:
+      actions: write
     runs-on: ubuntu-latest
 
     steps:
